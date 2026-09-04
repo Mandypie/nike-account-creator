@@ -1,6 +1,6 @@
 {
   "name": "nike-account-creator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Automated Nike account creation with temp email verification and code auto-fill",
   "main": "dist/index.js",
   "bin": {
@@ -30,7 +30,9 @@
     "dotenv": "^16.3.1",
     "ora": "^5.4.1",
     "prompt-sync": "^4.2.0",
-    "temp-mail": "^1.0.0"
+    "temp-mail": "^1.0.0",
+    "commander": "^11.0.0",
+    "mailslurp-client": "^12.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
