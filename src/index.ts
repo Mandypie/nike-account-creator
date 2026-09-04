@@ -1,49 +1,23 @@
-import express from 'express';
-import { config } from './config/index.js';
-import { logger } from './logging/logger.js';
-import { initializeDatabase, closeDatabase } from './database/index.js';
-import routes from './api/routes.js';
+import { NikeAccountCreator } from './services/AccountCreator';
+import { TempEmailService } from './services/TempEmailService';
+import { Logger } from './utils/Logger';
 
-const app = express();
+const logger = new Logger('Main');
 
-app.use(express.json());
-
-// Mount routes
-app.use('/api', routes);
-
-// Initialize and start
-async function start() {
+async function main(): Promise<void> {
   try {
-    // Initialize database
-    await initializeDatabase();
-
-    // Start server
-    const PORT = config.port;
-    const server = app.listen(PORT, () => {
-      logger.info(`🚀 Nike Account Creator API running on port ${PORT}`);
-      logger.info(`📊 Environment: ${config.nodeEnv}`);
-    });
-
-    // Graceful shutdown
-    process.on('SIGTERM', async () => {
-      logger.info('SIGTERM received, shutting down gracefully');
-      server.close(async () => {
-        await closeDatabase();
-        process.exit(0);
-      });
-    });
-
-    process.on('SIGINT', async () => {
-      logger.info('SIGINT received, shutting down gracefully');
-      server.close(async () => {
-        await closeDatabase();
-        process.exit(0);
-      });
-    });
+    logger.info('Nike Account Creator initialized');
+    
+    const tempEmailService = new TempEmailService();
+    const accountCreator = new NikeAccountCreator(tempEmailService);
+    
+    // Example usage
+    logger.info('Ready to create Nike accounts');
+    
   } catch (error) {
-    logger.error('Failed to start application', { error });
+    logger.error(`Fatal error: ${error instanceof Error ? error.message : String(error)}`);
     process.exit(1);
   }
 }
 
-start();
+main();
