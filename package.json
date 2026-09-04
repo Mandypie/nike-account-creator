@@ -1,0 +1,47 @@
+{
+  "name": "nike-account-creator",
+  "version": "1.0.0",
+  "description": "Automated Nike account creation with temp email verification and code auto-fill",
+  "main": "dist/index.js",
+  "bin": {
+    "nike-account-creator": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "start": "node dist/cli.js",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "lint": "eslint src --ext .ts",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "nike",
+    "account",
+    "automation",
+    "temp-email",
+    "cli"
+  ],
+  "author": "Mandypie",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "chalk": "^4.1.2",
+    "dotenv": "^16.3.1",
+    "ora": "^5.4.1",
+    "prompt-sync": "^4.2.0",
+    "temp-mail": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/prompt-sync": "^4.2.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
