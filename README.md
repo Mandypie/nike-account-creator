@@ -1,10 +1,10 @@
-# nike-account-creator
+# account-automation
 
-Automated Nike account creation with temp email verification and code auto-fill
+Automated account creation with temporary email verification and verification code auto-fill
 
 ## Features
 
-- 🤖 Automated Nike account creation
+- 🤖 Automated account creation
 - 📧 Temporary email integration for verification
 - 🔐 Automatic verification code extraction and auto-fill
 - ⚡ High-speed account creation
@@ -21,8 +21,8 @@ Automated Nike account creation with temp email verification and code auto-fill
 ### Clone the repository
 
 ```bash
-git clone https://github.com/Mandypie/nike-account-creator.git
-cd nike-account-creator
+git clone https://github.com/Mandypie/account-automation.git
+cd account-automation
 ```
 
 ### Install dependencies
@@ -42,7 +42,7 @@ cp .env.example .env
 2. Edit `.env` with your configuration:
 
 ```env
-NIKE_API_BASE_URL=https://www.nike.com
+API_BASE_URL=https://www.example.com
 TEMP_EMAIL_SERVICE=tempmail
 DEBUG=false
 LOG_LEVEL=info
@@ -71,7 +71,7 @@ Runs the project in development mode with ts-node (no compilation needed).
 ### Using the CLI
 
 ```bash
-# Create a new Nike account
+# Create a new account
 npm start create --password "your-password"
 
 # Verify email and auto-fill codes
@@ -81,11 +81,11 @@ npm start verify --email "temp-email@example.com"
 ### Programmatic usage
 
 ```typescript
-import { NikeAccountCreator } from './services/AccountCreator';
+import { AccountCreator } from './services/AccountCreator';
 import { TempEmailService } from './services/TempEmailService';
 
 const tempEmailService = new TempEmailService();
-const creator = new NikeAccountCreator(tempEmailService);
+const creator = new AccountCreator(tempEmailService);
 
 await creator.createAccount({
   email: 'user@example.com',
@@ -107,7 +107,7 @@ await creator.createAccount({
 ## Project Structure
 
 ```
-nike-account-creator/
+account-automation/
 ├── src/
 │   ├── services/
 │   │   ├── AccountCreator.ts      # Main account creation logic
@@ -122,7 +122,7 @@ nike-account-creator/
 ├── .eslintrc.json                 # ESLint configuration
 ├── .gitignore                     # Git ignore rules
 ├── .env.example                   # Environment template
-└── README.md                      # This file
+└── README.md                       # This file
 ```
 
 ## Dependencies
@@ -147,8 +147,8 @@ nike-account-creator/
 
 ```bash
 # 1. Clone and install
-git clone https://github.com/Mandypie/nike-account-creator.git
-cd nike-account-creator
+git clone https://github.com/Mandypie/account-automation.git
+cd account-automation
 npm install
 
 # 2. Build the project
@@ -209,10 +209,10 @@ npm run lint
 
 ## API Reference
 
-### NikeAccountCreator
+### AccountCreator
 
 ```typescript
-class NikeAccountCreator {
+class AccountCreator {
   createAccount(config: AccountConfig): Promise<void>
   verifyEmail(tempEmail: string): Promise<string>
 }
